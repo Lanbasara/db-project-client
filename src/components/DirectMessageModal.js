@@ -20,7 +20,7 @@ const DirectMessageModal = ({
   resetForm,
   setFieldValue,
 }) => (
-  <Modal open={open} onClose={onClose}>
+  <Modal style={{marginTop:150,marginLeft:350}} open={open} onClose={onClose}>
     <Modal.Header>Direct Messaging</Modal.Header>
     <Modal.Content>
       <Form>

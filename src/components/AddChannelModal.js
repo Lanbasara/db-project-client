@@ -21,7 +21,7 @@ const AddChannelModal = ({
   teamId,
   currentUserId,
 }) => (
-  <Modal
+  <Modal style={{marginTop:150,marginLeft:350}}
     open={open}
     onClose={(e) => {
       resetForm();

@@ -17,7 +17,7 @@ const InvitePeopleModal = ({
   touched,
   errors,
 }) => (
-  <Modal open={open} onClose={onClose}>
+  <Modal style={{marginTop:150,marginLeft:350}} open={open} onClose={onClose}>
     <Modal.Header>Add People to your Team</Modal.Header>
     <Modal.Content>
       <Form>

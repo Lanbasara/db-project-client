@@ -42,6 +42,7 @@ class CreateTeam extends React.Component {
 
       this.errors = err;
     }
+    
   };
 
   onChange = (e) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Comment } from 'semantic-ui-react';
+import { Comment,Button,Input } from 'semantic-ui-react';
 
 import FileUpload from '../components/FileUpload';
 import RenderText from '../components/RenderText';
@@ -41,8 +41,18 @@ const Message = ({ message: { url, text, filetype } }) => {
 };
 
 class MessageContainer extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      condition : {}
+    }
+  }
+  
   componentWillMount() {
     this.unsubscribe = this.subscribe(this.props.channelId);
+  }
+  componentDidMount(){
+    
   }
 
   componentWillReceiveProps({ channelId }) {
@@ -70,7 +80,6 @@ class MessageContainer extends React.Component {
         if (!subscriptionData) {
           return prev;
         }
-
         return {
           ...prev,
           messages: [...prev.messages, subscriptionData.data.newChannelMessage],
@@ -80,6 +89,7 @@ class MessageContainer extends React.Component {
 
   render() {
     const { data: { loading, messages }, channelId } = this.props;
+    var re = this.state.condition
     return loading ? null : (
       <FileUpload
         style={{
@@ -93,8 +103,28 @@ class MessageContainer extends React.Component {
         }}
         channelId={channelId}
         disableClick
-      >
+      > 
+  
         <Comment.Group>
+        <Button  
+          onClick={() => {
+          var a = document.getElementsByClassName('text')
+          var search = [];
+          for(let o of a){
+            search.push(o.innerHTML)
+          }
+          var sres = search.filter((item)=>{
+            return re.test(item)
+          })
+          console.log(sres)
+            }} >搜索</Button>
+          <Input 
+          onChange={(e)=>{
+            this.setState({
+              condition : eval(`/${e.target.value}/`)
+            })
+          }}
+          placeholder='Search...' />
           {messages.map(m => (
             <Comment key={`${m.id}-message`}>
               <Comment.Content>
@@ -103,9 +133,9 @@ class MessageContainer extends React.Component {
                   <div>{m.created_at}</div>
                 </Comment.Metadata>
                 <Message message={m} />
-                <Comment.Actions>
+                {/* <Comment.Actions>
                   <Comment.Action>Reply</Comment.Action>
-                </Comment.Actions>
+                </Comment.Actions> */}
               </Comment.Content>
             </Comment>
           ))}

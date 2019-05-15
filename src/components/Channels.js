@@ -96,7 +96,9 @@ export default ({
         <a href="#invite-people" onClick={onInvitePeopleClick}>
           + Invite People
         </a>
+        
       </div>
     )}
+    
   </ChannelWrapper>
 );

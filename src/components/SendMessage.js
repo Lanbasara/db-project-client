@@ -13,7 +13,6 @@ const SendMessageWrapper = styled.div`
 `;
 
 const ENTER_KEY = 13;
-
 const SendMessage = ({
   placeholder,
   values,

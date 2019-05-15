@@ -109,14 +109,11 @@ class MessageContainer extends React.Component {
         <Button  
           onClick={() => {
           var a = document.getElementsByClassName('text')
-          var search = [];
           for(let o of a){
-            search.push(o.innerHTML)
+            if(re.test(o.innerHTML)){
+              o.style.color="red"
+            }
           }
-          var sres = search.filter((item)=>{
-            return re.test(item)
-          })
-          console.log(sres)
             }} >搜索</Button>
           <Input 
           onChange={(e)=>{

@@ -117,7 +117,7 @@ class MessageContainer extends React.Component {
               o.style.color="red"
             }
           }
-            }} >搜索</Button>
+            }} >Search</Button>
           <Input 
           onChange={(e)=>{
             this.setState({

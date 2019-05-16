@@ -110,6 +110,9 @@ class MessageContainer extends React.Component {
           onClick={() => {
           var a = document.getElementsByClassName('text')
           for(let o of a){
+            if(o.style.color="red"){
+              o.style.color = "black"
+            }
             if(re.test(o.innerHTML)){
               o.style.color="red"
             }
